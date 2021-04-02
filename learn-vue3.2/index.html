@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Vue 3.2</title>
+    <link rel='stylesheet' href="theme.css" />
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+  
+    <div class="container pt-5" id='app' v-cloak>
+        <div class="card center">
+            <div v-html="myHtml" ></div>
+            <!-- <h2 v-text="title"></h2> 
+            <h2 v-once> {{title}} </h2>
+            <h2 v-pre> {{title}} </h2>
+            
+            <button
+            @click="title = 'I am not Grut'" 
+            class="btn"
+            >Change title</button> -->
+
+            <!-- or v-if="itmes.length": 0 is false  -->
+            <div class="form-control">
+                <input
+                ref="myInput" 
+                @keyup.enter="addItem"
+                type="text">
+            </div>
+            <ul class="list" v-if="items.length !==0 ">
+                <li
+                :key="item"
+                @click="removeItem(i), log(item)"
+                v-for="(item, i) in items"
+                class="list-item"
+                >  <p> {{ item }} </p>&nbsp;
+                <input
+                
+                @click.stop
+                type="text" > 
+                </li>
+
+                <!-- <li 
+                v-for="(value, key) in person"
+                class="list-item">
+                  <p> {{ key }}: </p> {{ value }}
+                </li> -->
+            </ul>
+
+            <!-- <h3 v-else >There are no items</h3> -->
+            <h3 v-show="items.length === 0">There are no items</h3>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js" ></script>
+</body>
+</html>
